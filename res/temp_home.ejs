@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotispy -
+        <%= username %>
+    </title>
+</head>
+
+<body>
+    <h1>Hi
+        <%= username %>
+    </h1>
+    <form action="home/logout" method="POST">
+        <button type="submit">Log Out</button>
+    </form>
+    <br>
+    <h1>Authorize</h1>
+    <form action="/spoty" method="GET">
+        <button type="submit" id="btn">Spotify</button>
+    </form>
+    <br>
+    <h1>Search Song ( Authorize first to get token)</h1>
+    <form action="/spoty/search" method="POST">
+        <input class="un" name="song_name" type="text" placeholder="Search" required>
+        <input class="submit" type="submit">
+    </form>
+    <br>
+    <h1>Upload File</h1>
+    <form name="upload-form" action="home/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="attachment" id="attachment">
+        <button type="submit">Send</button>
+    </form>
+
+
+    <script type="text/javascript ">
+        function upload() {
+            event.preventDefault
+            var input_file = document.getElementById('file').files[0]
+            console.log(input_file)
+            console.log('file upload')
+            const formdata = new FormData()
+            formdata.append("image ", input_file)
+            fetch("http://localhost:3000/upload ", {
+                    method: "POST ",
+                    body: formdata
+                }).then(data => data.json())
+                .then(data => console.log(data))
+        }
+    </script>
+</body>
+
+</html>
