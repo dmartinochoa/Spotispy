@@ -3,7 +3,7 @@
 var slider = document.getElementById('song-progress');
 
 noUiSlider.create(slider, {
-    start: [20],
+    start: [0],
     range: {
         'min': [0],
         'max': [100]

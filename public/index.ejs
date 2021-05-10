@@ -234,9 +234,11 @@
     <script>
         // racingrtz5214@spotify.com dont touch my shit bro
         // spotify web player sdk shit
+
         var server_data = '<%- JSON.stringify(data) %>'
         server_data = JSON.parse(server_data)
         var token = server_data.token
+        const progress_bar = document.querySelector('.noUi-origin')
 
         window.onSpotifyWebPlaybackSDKReady = () => {
 
@@ -274,7 +276,9 @@
             player.addListener('player_state_changed', state => {
                 var msg = 'Now playing: ' + state.track_window.current_track.name + ' by ' + state.track_window.current_track.artists[0].name
                 console.log(msg)
-                console.log(state);
+
+                var track_progress = (state.position / state.duration) * 100
+                progress_bar.style.left = track_progress + '%'
             });
 
             // Ready
@@ -292,6 +296,12 @@
                 console.log('Device ID has gone offline', device_id);
             });
 
+            // player.addListener('update', ({
+            //     device_id
+            // }) => {
+            //     console.log('wtf');
+            // });
+
             player.resume().then(() => {
                 console.log('Resumed!');
             });
@@ -299,6 +309,13 @@
             // Connect to the player!
             player.connect();
         };
+
+
+        // player.on('update', response => {
+        //     console.log('jesus save us')
+        //     track_progress = (response.progress_ms * 100) / response.item.duration_ms
+        //     progress_bar.style.left = track_progress + '%'
+        // });
     </script>
 </body>
 

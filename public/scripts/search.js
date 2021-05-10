@@ -9,6 +9,14 @@ var devices = document.getElementById("devices")
 var btn_play = document.querySelector("#play")
 var new_device
 
+var search_bar = document.getElementById("searchbar")
+search_bar.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        searchAll(search_bar.value)
+    }
+})
+
 async function searchAll(input) {
     let resCallback, rejCallback
     const returnPromise = new Promise((resolve, reject) => {
@@ -29,6 +37,11 @@ async function searchAll(input) {
     showAlbums(content.albums)
     showArtists(content.artists)
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////SHOW IN VIEW/////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 function showTracks(tracks) {
     var track_html = '<div class="section-title"><big>Songs</big></div> <div class="tracks">'
@@ -82,7 +95,6 @@ function showArtists(artists) {
             img_url = artist.images[0].url
         }
         var uri = artist.uri.substring(15)
-        console.log("🚀 ~ file: index.ejs ~ line 431 ~ showArtists ~ uri", uri)
 
         artist_html += '<div class="media-card" id=artist data-id=' + uri + '> <div class="media-card__image" data-id=' + uri + ' style="background-image: url(' + img_url + ');">' +
             ' <i class="ion-ios-play" data-id=' + uri + '></i> </div> <a class="media-card__footer"  data-id=' + uri + '>' + artist.name + ' <div style="color:grey;"  data-id=' +
@@ -91,13 +103,9 @@ function showArtists(artists) {
     artist_list.innerHTML = artist_html
 }
 
-var search_bar = document.getElementById("searchbar")
-search_bar.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        searchAll(search_bar.value)
-    }
-})
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////ON CLICK/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 track_list.onclick = function(event) {
     let target = event.target
@@ -135,8 +143,12 @@ artist_list.onclick = function(event) {
 //         });
 // }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////OTHER////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function play_uri(uri, position) {
-    console.log("🚀 ~ file: search.js ~ line 140 ~ play_uri ~  position", position)
     var url = "https://api.spotify.com/v1/me/player/play?device_id=" + new_device
 
     var myHeaders = new Headers();
@@ -144,7 +156,6 @@ function play_uri(uri, position) {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = '{"context_uri": "' + uri + '","offset": {"position": ' + position + '},"position_ms": 0}'
-    console.log("🚀 ~ file: search.js ~ line 148 ~ play_uri ~ raw", raw)
 
     var requestOptions = {
         method: 'PUT',
@@ -157,7 +168,36 @@ function play_uri(uri, position) {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+
+    get_playback_info()
 }
+
+function get_playback_info() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+    setInterval(function() {
+
+        fetch("https://api.spotify.com/v1/me/player?market=ES&additional_types=episode", requestOptions)
+            .then(response => response.text())
+            .then(result => show_track_info(JSON.parse(result)))
+            .catch(error => console.log('error', error));
+    }, 1000);
+}
+
+function show_track_info(result) {
+    var duration = result.item.duration_ms
+    var progress = result.progress_ms
+
+    var track_progress = (progress / duration) * 100
+    progress_bar.style.left = track_progress + '%'
+}
+
 
 function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);

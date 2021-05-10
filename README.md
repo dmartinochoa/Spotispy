@@ -63,7 +63,7 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 |         iOS    |	 Safari, Chrome   | ✕ Not Supported   |
 * IE 11 or above. Must be on Windows 8.1 or above.
 ***
-![alt text](https://scontent-mad1-1.xx.fbcdn.net/v/t1.6435-9/118293952_4495908530450093_8471206256630841653_n.png?_nc_cat=101&ccb=1-3&_nc_sid=6e5ad9&_nc_ohc=ajsfkLc87fMAX9CuSyS&_nc_oc=AQlIQORXTl2P-8CWK-EBru0mzV_gbBQ4Fc5BAHXexIpdjTFTWbXby8JpJLe1ok3hZ-U&_nc_ht=scontent-mad1-1.xx&oh=451d2b68bdd96ef40b685d291b9d382e&oe=60952134 "Ayo")
+
 
 
 
