@@ -181,7 +181,7 @@
     <section class="current-track">
         <div class="current-track__actions" id="current-track__actions">
             <a class="ion-ios-skipbackward"></a>
-            <a class="ion-ios-play play" onclick="play_pause(this)" id="play"></a>
+            <a class="ion-ios-play" id="play"></a>
             <a class="ion-ios-skipforward"></a>
         </div>
 
@@ -237,9 +237,6 @@
         var server_data = '<%- JSON.stringify(data) %>'
         server_data = JSON.parse(server_data)
         var token = server_data.token
-        var devices = document.getElementById("devices")
-        var btn_play = document.querySelector(".play")
-        var new_device
 
         window.onSpotifyWebPlaybackSDKReady = () => {
 
@@ -301,74 +298,7 @@
 
             // Connect to the player!
             player.connect();
-
-            btn_play.onclick = function(event) {
-                    lautadnotieneverguenza()
-                        // player.togglePlay().then(() => {
-                        //     //btn_play.classList.toggle("ion-ios-play");
-                        //     console.log('Toggled playback!');
-                        // });
-                } // btn.onclick = function(event) {
-                //     const play = ({
-                //         spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
-                //         playerInstance: {
-                //             _options: {
-                //                 token,
-                //                 new_device
-                //             }
-                //         }
-                //     })
-
-            //     play({
-            //         playerInstance: new Spotify.Player({
-            //             name: "..."
-            //         }),
-            //         spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
-            //     });
-            // }
         };
-
-
-        function waitForElement() {
-            if (typeof new_device !== "undefined") {
-                console.log("🚀 ~ file: index.ejs ~ line 331 ~ waitForElement ~ new_device", new_device)
-                play_uri()
-            } else {
-                console.log(" ~ new_device", new_device)
-                setTimeout(waitForElement, 250);
-            }
-        }
-
-        function play_uri() {
-            console.log("yo we gucci : " + new_device + 'dismashiet' + token)
-            console.log("🚀 ~ file: index.ejs ~ line 346 ~ lautadnotieneverguenza ~  token", token)
-            var url = "https://api.spotify.com/v1/me/player/play?device_id=" + new_device
-
-
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", "Bearer " + token);
-            myHeaders.append("Content-Type", "application/json");
-
-            var raw = JSON.stringify({
-                "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-                "offset": {
-                    "position": 0
-                },
-                "position_ms": 0
-            });
-
-            var requestOptions = {
-                method: 'PUT',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-            };
-
-            fetch(url, requestOptions)
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
-        }
     </script>
 </body>
 

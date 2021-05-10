@@ -5,16 +5,18 @@ var album_list = document.getElementById("albums")
 var artist_list = document.getElementById("artists")
 var music_widget = document.getElementById("widgetPlayer")
     //const type = 'track%2Cartist%2Cplaylist%2Cepisode%2Calbum%2Cshow' //Use this to fetch extra content
+var devices = document.getElementById("devices")
+var btn_play = document.querySelector("#play")
+var new_device
 
 async function searchAll(input) {
-    //TODO: VERIFY INPUT DOESNT HAVE URL FUCKING CHARACTERS
     let resCallback, rejCallback
     const returnPromise = new Promise((resolve, reject) => {
         resCallback = resolve
         refCallback = reject
     })
     const type = '&type=track%2Cartist%2Calbum'
-    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=10', {
+    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=20', {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token,
@@ -35,17 +37,21 @@ function showTracks(tracks) {
         const duration = millisToMinutesAndSeconds(track.duration_ms)
         var explicit = ''
         var img_url = 'none found'
-        var uri = track.uri.substring(14)
+        var uri = track.album.uri
+        var position = track.track_number - 1
+
+        //var uri = track.uri.substring(14)
+
         if (track.explicit) {
             explicit = '<span class="label" data-id=' + uri + '>Explicit</span>'
         }
         if (track.album.images[0]) {
             img_url = track.album.images[0].url
         }
-        track_html += ' <div class="track" id=track data-id=' + uri + '> <div class="track__art" > <img src="' + img_url + '" data-id=' + uri + 'alt="Img not found"/> </div>' +
-            '<div class="track__title track" data-id=' + uri + '" data-id=' + uri + '> ' + track.name + '<div style="color:grey;" data-id=' + uri +
-            '> <small class="track__artist" data-id=' + uri + ' style="padding-left:5px;"> ' + track.artists[0].name +
-            '</small></div> </div> <div class="track__explicit">' + explicit + '  </div> <div class="track__plays" data-id=' + uri + '>' + duration + '</div></div>'
+        track_html += ' <div class="track" id=track data-id=' + uri + '  data-position=' + position + '> <div class="track__art" > <img src="' + img_url + '" data-id=' + uri + '   data-position=' + position + ' alt="Img not found"/> </div>' +
+            '<div class="track__title track" data-id=' + uri + ' data-position=' + position + ' " data-id=' + uri + '> ' + track.name + '<div style="color:grey;" data-id=' + uri +
+            ' data-position=' + position + '> <small class="track__artist" data-id=' + uri + ' data-position=' + position + ' style="padding-left:5px;"> ' + track.artists[0].name +
+            '</small></div> </div> <div class="track__explicit">' + explicit + '  </div> <div class="track__plays" data-id=' + uri + '   data-position=' + position + '>' + duration + '</div></div>'
     }
     track_list.innerHTML = track_html
 }
@@ -105,7 +111,8 @@ track_list.onclick = function(event) {
     }
     event.target.style.color = "#1DB954";
     const uri = target.getAttribute('data-id')
-    music_widget.innerHTML = '<iframe src="https://open.spotify.com/embed/track/' + uri + '" style="border: 0; width: 100%; height: 80px; position:end" allowfullscreen allow="encrypted-media"></iframe>'
+    const position = target.getAttribute('data-position')
+    play_uri(uri, position)
 }
 
 album_list.onclick = function(event) {
@@ -118,6 +125,38 @@ artist_list.onclick = function(event) {
     let target = event.target
     const uri = target.getAttribute('data-id')
     music_widget.innerHTML = '<iframe src="https://open.spotify.com/embed/artist/' + uri + '" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+}
+
+// btn_play.onclick = function(event) {
+//     play_uri()
+//         btn_play.classList.toggle("ion-ios-play");
+//         player.togglePlay().then(() => { 
+//             console.log('Toggled playback!');
+//         });
+// }
+
+function play_uri(uri, position) {
+    console.log("🚀 ~ file: search.js ~ line 140 ~ play_uri ~  position", position)
+    var url = "https://api.spotify.com/v1/me/player/play?device_id=" + new_device
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = '{"context_uri": "' + uri + '","offset": {"position": ' + position + '},"position_ms": 0}'
+    console.log("🚀 ~ file: search.js ~ line 148 ~ play_uri ~ raw", raw)
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function millisToMinutesAndSeconds(millis) {
