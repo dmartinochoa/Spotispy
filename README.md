@@ -32,28 +32,28 @@
   ├── /routes		- api routes <br/>
   └── /views		-  yep <br/>
   ***
-# Resources <br>
-## ℹ️ PostgreSql and Node Server Info  <br/>
+# ℹ️ Resources <br>
+## PostgreSql and Node Server Info  <br/>
 Use .sql file in Resource folder to import the database <br/>
 [Node/Express Login System](https://codeshack.io/basic-login-system-nodejs-express-mysql/#:~:text=Getting%20Started,js.)<br/>
 [Node Course](https://www.youtube.com/watch?v=Oe421EPjeBE)<br/>
 
-## ℹ️ Spotify API Info  <br/>
+## Spotify API Info  <br/>
 [Spotify API Demo](https://github.com/mujibsardar/spotify_jquery_only)<br/>
 [Connect to Spotify API](https://youtu.be/d0FFlTeyAY8)<br/>
 [Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)<br/>
 [Spotify Authorization](https://developer.spotify.com/documentation/general/guides/authorization-guide/)<br/>
 [spotify-web-api-node](https://stackoverflow.com/questions/27761493/using-spotify-web-api-node-to-generate-an-authentication-token#fromHistory)<br/>
 
-## ℹ️ Geospatial SQL Objects  <br/>
+## Geospatial SQL Objects  <br/>
 [PostGIS Extension](https://postgis.net/)<br/>
 
-## ℹ️ Https Info  <br/>
+## Https Info  <br/>
 Follow instructions for cert/key, run openssl.bat as admin<br/>
 [Create HTTPS server](https://bit.ly/3uBw2oF)<br/>
 [Openssl Download](https://slproweb.com/products/Win32OpenSSL.html)<br/>
 
-## ℹ️ Other Info  <br/>
+## Other Info  <br/>
 [File Upload](https://davidlaym.com/2018/04/subir-archivo-con-nodejs/)<br/>
 [Geolocation](https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation_map_script)<br/>
 [Nodemailer](https://blog.mailtrap.io/nodemailer-gmail/)<br/>
@@ -61,7 +61,7 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 [Build codepens](https://www.youtube.com/watch?v=rtdGg4Ttb4M)<br/>
 <br/>
 
-## ℹ️ Supported Browsers For Spotify Web Playback SDK  <br/>
+## Supported Browsers For Spotify Web Playback SDK  <br/>
 |OPERATING SYSTEM  |   	BROWSERS   |	STATUS   |
 | ---------------- | ------------- | --------- |
 | Mac/Windows/Linux  | Chrome, Firefox, IE*, Microsoft Edge |✓ Supported |
