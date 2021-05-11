@@ -8,9 +8,9 @@
            <summary>Node Modules</summary>
             <br>- Express -  npm install express</br>
             <br>- Express Sessions - npm install express-session</br>
-            <p>- Express Flash - npm install express-flash</p>
-            <p>- Postgresql for Node.js - npm install mpg</p>
-            <p>- EJS - npm install ejs</p>
+            <br>- Express Flash - npm install express-flash</br>
+            <br>- Postgresql for Node.js - npm install mpg</br>
+            <br>- EJS - npm install ejs</br>
             <p>- BCrypt - npm install bcrypt</p>
             <p>- Nodemailer - npm install nodemailer</p>
             <p>- Multer - npm install multer</p>
