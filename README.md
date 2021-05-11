@@ -41,8 +41,10 @@ Use .sql file in Resource folder to import the database <br/>
 [Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)<br/>
 [Authorization](https://developer.spotify.com/documentation/general/guides/authorization-guide/)<br/>
 [spotify-web-api-node explanation](https://stackoverflow.com/questions/27761493/using-spotify-web-api-node-to-generate-an-authentication-token#fromHistory)<br/>
-## ℹ️ Geospatiol SQL Objects  <br/>
+
+## ℹ️ Geospatial SQL Objects  <br/>
 [PostGIS](https://postgis.net/)<br/>
+
 ## ℹ️ Https Info  <br/>
 Follow instructions for cert/key, run openssl.bat as admin<br/>
 [Create HTTPS server](https://bit.ly/3uBw2oF)<br/>
