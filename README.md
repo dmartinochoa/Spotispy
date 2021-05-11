@@ -5,7 +5,7 @@
 - Node.js (v14.16.1)
 - Postgresql db
 <details>
-           <summary>#### Node Modules</summary>
+           <summary>Node Modules</summary>
             <p>- Express - Install with command: ```npm install express```</p>
             <p>- Express Sessions - Install with command: ```npm install express-session```</p>
             <p>- Express Flash - Install with command: ```npm install express-flash```</p>
