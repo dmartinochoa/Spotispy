@@ -25,7 +25,7 @@
   ├── /config		-	config settings, env variables <br/>
   ├── /models		-	data access layer, business logic	 <br/>
   ├── /node_modules		-	self explanatory	 <br/>
-  ├── /public	 - hosted files on server ```https://localhost:3000/(filepath)```	 <br/>
+  ├── /public	 - public files on server ```https://localhost:3000/(filepath)```	<br>
   ├── /res		-	resources  <br/> 
   ├── /routes		- api routes <br/>
   └── /views		-  yep <br/>
