@@ -31,7 +31,7 @@
   ├── /res		-	resources  <br/> 
   ├── /routes		- api routes <br/>
   └── /views		-  yep <br/>
-  ***
+ 
 ## ℹ️ Resources <br>
 ### PostgreSql and Node Server Info  <br/>
 Use .sql file in Resource folder to import the database <br/>
