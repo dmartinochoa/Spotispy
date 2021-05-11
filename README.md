@@ -3,9 +3,9 @@
 
 ## ✔️ Requirements  <br/>
 - Node.js (v14.16.1)
-- PostgreSQL
+- PostgreSQL With PostGIS Extension
 <details>
-           <summary>Node Modules List</summary>
+           <summary>Node Modules</summary>
             <p>- Express -  npm install express</p>
             <p>- Express Sessions - npm install express-session</p>
             <p>- Express Flash - npm install express-flash</p>
@@ -16,12 +16,11 @@
             <p>- Multer - npm install multer</p>
             <p>- Cookie-parser - npm cookie-parser</p>
             <p>- Querystring - npm install querystring</p>
-            <p>- Spotify web api node - install spotify-web-api-node</p>
-            <p>- Morgan -  Install with command: npm install morgan</p>
-            <p>- Nodemon - Intall with command: npm install nodemon</p>
-            <p>- Colors - Intall with command: npm install colors</p> 
+            <p>- Spotify web api node - npm install spotify-web-api-node</p>
+            <p>- Morgan - npm install morgan</p>
+            <p>- Nodemon - npm install nodemon</p>
+            <p>- Colors - npm install colors</p> 
 </details>
-
 
 ## 📁 Structure  <br/>
   ├── app.js	-	entry point <br/>
@@ -32,8 +31,9 @@
   ├── /res		-	resources  <br/> 
   ├── /routes		- api routes <br/>
   └── /views		-  yep <br/>
-  
-## ℹ️ PostgreSql/Node Server Info  <br/>
+  ***
+# Resources <br>
+## ℹ️ PostgreSql and Node Server Info  <br/>
 Use .sql file in Resource folder to import the database <br/>
 [Node/Express Login System](https://codeshack.io/basic-login-system-nodejs-express-mysql/#:~:text=Getting%20Started,js.)<br/>
 [Node Course](https://www.youtube.com/watch?v=Oe421EPjeBE)<br/>
