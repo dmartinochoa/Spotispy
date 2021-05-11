@@ -4,6 +4,7 @@
 ## ✔️ Requirements  <br/>
 - Node.js (v14.16.1)
 - Postgresql db
+#### Node Modules <br/>
 - Express - Install with command: ```npm install express```
 - Express Sessions - Install with command: ```npm install express-session```
 - Express Flash - Install with command: ```npm install express-flash```
