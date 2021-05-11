@@ -4,22 +4,26 @@
 ## ✔️ Requirements  <br/>
 - Node.js (v14.16.1)
 - Postgresql db
-#### Node Modules <br/>
-- Express - Install with command: ```npm install express```
-- Express Sessions - Install with command: ```npm install express-session```
-- Express Flash - Install with command: ```npm install express-flash```
-- Postgresql for Node.js - Install with command: ```npm install mpg```
-- EJS - Install with command: ```npm install ejs```
-- BCrypt - ```npm install bcrypt```
-- Nodemailer - ```npm install nodemailer```
-- Multer - ```npm install multer```
-- Cookie-parser - ```npm cookie-parser```
-- Querystring - ```npm install querystring```
-- Spotify web api node - ```install spotify-web-api-node```
-- Morgan -  Install with command: ```npm install morgan```
-- Nodemon - Intall with command: ```npm install nodemon``` 
-  - To start demon ```nodemon app.js``` 
-- Colors - Intall with command: ```npm install colors```
+<details>
+           <summary>#### Node Modules</summary>
+            <p>- Express - Install with command: ```npm install express```</p>
+            <p>- Express Sessions - Install with command: ```npm install express-session```</p>
+            <p>- Express Flash - Install with command: ```npm install express-flash```</p>
+            <p>- Postgresql for Node.js - Install with command: ```npm install mpg```</p>
+            <p>- EJS - Install with command: ```npm install ejs```</p>
+            <p>- BCrypt - ```npm install bcrypt```</p>
+            <p>- Nodemailer - ```npm install nodemailer```</p>
+            <p>- Multer - ```npm install multer```</p>
+            <p>- Cookie-parser - ```npm cookie-parser```</p>
+            <p>- Querystring - ```npm install querystring```</p>
+            <p>- Spotify web api node - ```install spotify-web-api-node```</p>
+            <p>- Morgan -  Install with command: ```npm install morgan```</p>
+            <p>- Nodemon - Intall with command: ```npm install nodemon``` </p>
+            <p>- To start demon ```nodemon app.js``` </p>
+            <p>- Colors - Intall with command: ```npm install colors```</p>
+          
+</details>
+
 
 ## 📁 Structure  <br/>
   ├── app.js	-	entry point <br/>
