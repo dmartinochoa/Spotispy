@@ -11,7 +11,7 @@
             <p>- Express Flash - npm install express-flash</p>
             <p>- Postgresql for Node.js - npm install mpg</p>
             <p>- EJS - npm install ejs</p>
-            <p>- BCrypt - npm install bcrypt</p>
+            <p>- Crypto-js - npm install crypto-js</p>
             <p>- Nodemailer - npm install nodemailer</p>
             <p>- Multer - npm install multer</p>
             <p>- Cookie-parser - npm cookie-parser</p>
