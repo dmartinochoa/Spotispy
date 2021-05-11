@@ -5,12 +5,12 @@
 - Node.js (v14.16.1)
 - PostgreSQL
 <details>
-           <summary>Node Modules</summary>
-            <br>- Express -  npm install express</br>
-            <br>- Express Sessions - npm install express-session</br>
-            <br>- Express Flash - npm install express-flash</br>
-            <br>- Postgresql for Node.js - npm install mpg</br>
-            <br>- EJS - npm install ejs</br>
+           <summary>Node Modules List</summary>
+            <p>- Express -  npm install express</p>
+            <p>- Express Sessions - npm install express-session</p>
+            <p>- Express Flash - npm install express-flash</p>
+            <p>- Postgresql for Node.js - npm install mpg</p>
+            <p>- EJS - npm install ejs</p>
             <p>- BCrypt - npm install bcrypt</p>
             <p>- Nodemailer - npm install nodemailer</p>
             <p>- Multer - npm install multer</p>
@@ -19,8 +19,7 @@
             <p>- Spotify web api node - install spotify-web-api-node</p>
             <p>- Morgan -  Install with command: npm install morgan</p>
             <p>- Nodemon - Intall with command: npm install nodemon</p>
-            <p>- Colors - Intall with command: npm install colors</p>
-          
+            <p>- Colors - Intall with command: npm install colors</p> 
 </details>
 
 
