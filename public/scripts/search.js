@@ -7,7 +7,9 @@ var artist_list = document.getElementById("artists")
 var music_widget = document.getElementById("widgetPlayer")
     //const type = 'track%2Cartist%2Cplaylist%2Cepisode%2Calbum%2Cshow' //Use this to fetch extra content
 var devices = document.getElementById("devices")
-var btn_play = document.querySelector("#play")
+var btn_play = document.querySelector("#play_pause")
+var pause_ico = document.querySelector("#pause")
+var play_ico = document.querySelector("#play")
 var new_device
 var isPlaying = false;
 
@@ -123,6 +125,9 @@ track_list.onclick = function(event) {
     const uri = target.getAttribute('data-id')
     const position = target.getAttribute('data-position')
     play_uri(uri, position)
+    isPlaying = true;
+    play_ico.style.display = "none";
+    pause_ico.style.display = "block"
 }
 
 album_list.onclick = function(event) {
@@ -137,7 +142,8 @@ artist_list.onclick = function(event) {
     music_widget.innerHTML = '<iframe src="https://open.spotify.com/embed/artist/' + uri + '" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
 }
 btn_play.onclick = function(event) {
-    refresh_auth()
+
+    //refresh_auth()
     play_pause()
 }
 
@@ -169,14 +175,13 @@ function play_uri(uri, position) {
         body: raw,
         redirect: 'follow'
     };
-
     fetch(url, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
     get_playback_info()
-    isPlaying = true;
+
 }
 
 function get_playback_info() {
@@ -202,9 +207,13 @@ function play_pause() {
     if (isPlaying) {
         pause()
         isPlaying = false;
+        play_ico.style.display = "block"
+        pause_ico.style.display = "none"
     } else {
         play()
         isPlaying = true;
+        play_ico.style.display = "none"
+        pause_ico.style.display = "block"
     }
 }
 
