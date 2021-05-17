@@ -244,7 +244,9 @@
         var token = server_data.token
         var refresh_token = server_data.refresh_token
         const progress_bar = document.querySelector('.noUi-origin')
-
+        const volume_bar = document.querySelector('.noUi-origin')
+        const song_duration = document.querySelector('.current-track__progress__finish')
+        const song_timestamp = document.querySelector('.current-track__progress__start')
         window.onSpotifyWebPlaybackSDKReady = () => {
 
             const player = new Spotify.Player({

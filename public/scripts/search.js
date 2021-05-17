@@ -200,7 +200,7 @@ function get_playback_info() {
             .then(response => response.text())
             .then(result => show_track_info(JSON.parse(result)))
             .catch(error => console.log('error', error));
-    }, 1000);
+    }, 500);
 }
 
 function play_pause() {
@@ -292,12 +292,33 @@ function previous_track() {
         .catch(error => console.log('error', error));
 }
 
+function set_volume(volume_percent) {
+    var url = "https://api.spotify.com/v1/me/player/volume?volume_percent" + volume_percent + "& device_id = " + new_device
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch("https://api.spotify.com/v1/me/player/volume?volume_percent=6&device_id=13a8c92ccd83145ba28e0ccb294ec479166b4e03", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
 function show_track_info(result) {
     var duration = result.item.duration_ms
     var progress = result.progress_ms
 
     var track_progress = (progress / duration) * 100
     progress_bar.style.left = track_progress + '%'
+    song_timestamp.innerHTML = millisToMinutesAndSeconds(progress)
+    song_duration.innerHTML = millisToMinutesAndSeconds(duration)
 }
 
 function refresh_auth() {
