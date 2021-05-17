@@ -10,6 +10,9 @@ var devices = document.getElementById("devices")
 var btn_play = document.querySelector("#play_pause")
 var pause_ico = document.querySelector("#pause")
 var play_ico = document.querySelector("#play")
+var next_ico = document.querySelector(".ion-ios-skipforward")
+var previous_ico = document.querySelector(".ion-ios-skipbackward")
+
 var new_device
 var isPlaying = false;
 
@@ -142,19 +145,17 @@ artist_list.onclick = function(event) {
     music_widget.innerHTML = '<iframe src="https://open.spotify.com/embed/artist/' + uri + '" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
 }
 btn_play.onclick = function(event) {
-
     //refresh_auth()
     play_pause()
 }
 
-// btn_play.onclick = function(event) {
-//     play_uri()
-//         btn_play.classList.toggle("ion-ios-play");
-//         player.togglePlay().then(() => { 
-//             console.log('Toggled playback!');
-//         });
-// }
+next_ico.onclick = function(event) {
+    next_track()
+}
 
+previous_ico.onclick = function(event) {
+    previous_track()
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////OTHER////////////////////////////////////////////////////////////////////////////////////////////////
@@ -243,6 +244,44 @@ function pause() {
 
     var requestOptions = {
         method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function next_track() {
+    var url = "https://api.spotify.com/v1/me/player/next?device_id=" + new_device
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function previous_track() {
+    var url = "https://api.spotify.com/v1/me/player/previous?device_id=" + new_device
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'POST',
         headers: myHeaders,
         redirect: 'follow'
     };
