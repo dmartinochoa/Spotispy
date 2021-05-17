@@ -238,6 +238,7 @@
         var server_data = '<%- JSON.stringify(data) %>'
         server_data = JSON.parse(server_data)
         var token = server_data.token
+        var refresh_token = server_data.refresh_token
         const progress_bar = document.querySelector('.noUi-origin')
 
         window.onSpotifyWebPlaybackSDKReady = () => {

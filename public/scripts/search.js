@@ -1,5 +1,6 @@
 var server_data = document.getElementById('data').innerHTML
 var token = server_data.token
+var refresh_token = server_data.refresh_token
 var track_list = document.getElementById("tracks")
 var album_list = document.getElementById("albums")
 var artist_list = document.getElementById("artists")
@@ -8,6 +9,7 @@ var music_widget = document.getElementById("widgetPlayer")
 var devices = document.getElementById("devices")
 var btn_play = document.querySelector("#play")
 var new_device
+var isPlaying = false;
 
 var search_bar = document.getElementById("searchbar")
 search_bar.addEventListener("keyup", function(event) {
@@ -134,6 +136,10 @@ artist_list.onclick = function(event) {
     const uri = target.getAttribute('data-id')
     music_widget.innerHTML = '<iframe src="https://open.spotify.com/embed/artist/' + uri + '" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
 }
+btn_play.onclick = function(event) {
+    refresh_auth()
+    play_pause()
+}
 
 // btn_play.onclick = function(event) {
 //     play_uri()
@@ -170,6 +176,7 @@ function play_uri(uri, position) {
         .catch(error => console.log('error', error));
 
     get_playback_info()
+    isPlaying = true;
 }
 
 function get_playback_info() {
@@ -181,13 +188,60 @@ function get_playback_info() {
         headers: myHeaders,
         redirect: 'follow'
     };
+    // Calling this every second is dumb, I know, I dont care
     setInterval(function() {
-
         fetch("https://api.spotify.com/v1/me/player?market=ES&additional_types=episode", requestOptions)
             .then(response => response.text())
             .then(result => show_track_info(JSON.parse(result)))
             .catch(error => console.log('error', error));
     }, 1000);
+}
+
+function play_pause() {
+    console.log("is playing: " + isPlaying)
+    if (isPlaying) {
+        pause()
+        isPlaying = false;
+    } else {
+        play()
+        isPlaying = true;
+    }
+}
+
+function play() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch("https://api.spotify.com/v1/me/player/play", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    get_playback_info()
+    isPlaying = true;
+}
+
+function pause() {
+    var url = "https://api.spotify.com/v1/me/player/pause?device_id=" + new_device
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function show_track_info(result) {
@@ -198,6 +252,10 @@ function show_track_info(result) {
     progress_bar.style.left = track_progress + '%'
 }
 
+function refresh_auth() {
+    console.log("token: " + token)
+    console.log("refresh_token: " + refresh_token)
+}
 
 function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);

@@ -20,9 +20,10 @@ router.get('/logged', async function(request, response) {
     const user = request.session.username
     if (request.session.loggedin) {
         const token = request.session.token
+        const refresh_token = request.session.refresh_token
         console.log("🚀 ~ file: home.js ~ line 23 ~ router.get ~ token", token)
         response.render('../public/index.ejs', {
-            data: { username: user, token: token }
+            data: { username: user, token: token, refresh_token: refresh_token }
         })
     } else {
         response.send('Please login to view this page!')
