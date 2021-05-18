@@ -2,6 +2,7 @@ var server_data = document.getElementById('data').innerHTML
 var token = server_data.token
 var refresh_token = server_data.refresh_token
 var track_list = document.getElementById("tracks")
+var track_single = document.querySelector("track")
 var album_list = document.getElementById("albums")
 var artist_list = document.getElementById("artists")
 var music_widget = document.getElementById("widgetPlayer")
@@ -200,7 +201,7 @@ function get_playback_info() {
             .then(response => response.text())
             .then(result => show_track_info(JSON.parse(result)))
             .catch(error => console.log('error', error));
-    }, 500);
+    }, 650);
 }
 
 function play_pause() {
@@ -312,13 +313,15 @@ function set_volume(volume_percent) {
 }
 
 function show_track_info(result) {
-    var duration = result.item.duration_ms
-    var progress = result.progress_ms
+    if (!(typeof(result.item.duration_ms) != "undefined")) {
+        var duration = result.item.duration_ms
+        var progress = result.progress_ms
 
-    var track_progress = (progress / duration) * 100
-    progress_bar.style.left = track_progress + '%'
-    song_timestamp.innerHTML = millisToMinutesAndSeconds(progress)
-    song_duration.innerHTML = millisToMinutesAndSeconds(duration)
+        var track_progress = (progress / duration) * 100
+        progress_bar.style.left = track_progress + '%'
+        song_timestamp.innerHTML = millisToMinutesAndSeconds(progress)
+        song_duration.innerHTML = millisToMinutesAndSeconds(duration)
+    }
 }
 
 function refresh_auth() {

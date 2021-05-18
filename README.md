@@ -67,7 +67,7 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 | Mac/Windows/Linux  | Chrome, Firefox, IE*, Microsoft Edge |✓ Supported |
 |    Android       |Chrome, Firefox	      |   ✕ Not Supported   |
 |         iOS    |	 Safari, Chrome   | ✕ Not Supported   |
-* IE 11 or above. Must be on Windows 8.1 or above.
+* IE 11 or above. Must be on Windows 8.1 or above. It will stream whatever audio quality is set on spotify settings, very high might lag a bit.
 ***
 
 

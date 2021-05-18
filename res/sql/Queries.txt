@@ -1,0 +1,47 @@
+https://gyazo.com/98b964b5bd8534a7a34133ebb2bf482c -> 
+Aqui las 3 tablas principales para esto, la de friends es obviable pero como consideres, te paso foto tambien 
+por disc para guardarla por si luego hace falta en la memoria
+*-----------------------------------------------------------------------*
+
+SELECT b.id,ST_Distance(a.geom,b.geom)100 as dist
+FROM positions a,positions b
+WHERE a.id = '1' AND (ST_Distance(a.geom,b.geom)100) > CANTIDAD A MIRAR ;
+
+Con esta query simplemente se saca el id, y la distancia con respecto al usuario que le pases por el Where, la distancia la calcula con el ST_Distance, despues de haber 
+añadido la extension de Postgis que si no da pete (La pongo abajo por si acaso).
+El ST_Distance te lo devuelve como si fuera un Double pero lo considera de precision (no tengo ni puta de lo que es, pero con doubles se puede trabajar).
+Esta simplemente seria para sacar datos rapidos sin tener en cuenta genero o artista.
+Todo esto esta en KM recuerda
+
+*-----------------------------------------------------------------------*
+
+SELECT b.id,ST_Distance(a.geom,b.geom)*100 as dist, b.genero, b.artista
+FROM positions a,positions b
+WHERE a.id = '1' AND (ST_Distance(a.geom,b.geom)*100) > 0.4;
+
+Esta es basicamente lo de arriba pero sacando tambien los datos de genero y artista que esten en la tabla, en caso de no estar ninguno, no pasa nada, en plan si no subes un 
+genero de lo que esta escuchando o lo que sea se planta como null osea que da igual.
+El *100 es para sacarlo como KM, si quieres metros pues habria que añadir 0s.
+Y el filtrado de abajo es lo mismo, modificar 1 por el id del campo que se quiere contrastar y sino por parametro y el 0.4 es para probar medidas pero vamos, seria cambiarlo 
+por la distancia que quieras. 
+Te paso captura de como saca datos para que tengas una idea visual.
+
+https://gyazo.com/6c370e99d628cec2c36212f9dfda330a
+
+*-----------------------------------------------------------------------*
+
+Te paso esto por si no lo has añadido, aunque intuyo que si
+
+alter table positions add Genero char(10) 
+alter table positions add artista char(10)
+
+*-----------------------------------------------------------------------*
+
+Insert into Friends values('Usuario1','AmigoDeUsuario1')
+
+Yo creo que esta forma es la mas rapida y mas sencilla para trabajar con si son amigos o no, en caso de no hacerlo lo dejaba puesto para poner que esta para proximas 
+versiones, si queires opciones para plantear interaccion se pueden añadir likes y amigos, y hacer dos columnas mas y que sean contadores por ejemplo, si no planteo otra cosa
+
+
+
+
