@@ -3,9 +3,9 @@ Aqui las 3 tablas principales para esto, la de friends es obviable pero como con
 por disc para guardarla por si luego hace falta en la memoria
 *-----------------------------------------------------------------------*
 
-SELECT b.id,ST_Distance(a.geom,b.geom)100 as dist
+SELECT b.id,ST_Distance(a.geom,b.geom)*100 as dist
 FROM positions a,positions b
-WHERE a.id = '1' AND (ST_Distance(a.geom,b.geom)100) > CANTIDAD A MIRAR ;
+WHERE a.id = '1' AND (ST_Distance(a.geom,b.geom)*100) > 10 ;
 
 Con esta query simplemente se saca el id, y la distancia con respecto al usuario que le pases por el Where, la distancia la calcula con el ST_Distance, despues de haber 
 añadido la extension de Postgis que si no da pete (La pongo abajo por si acaso).
@@ -41,6 +41,9 @@ Insert into Friends values('Usuario1','AmigoDeUsuario1')
 
 Yo creo que esta forma es la mas rapida y mas sencilla para trabajar con si son amigos o no, en caso de no hacerlo lo dejaba puesto para poner que esta para proximas 
 versiones, si queires opciones para plantear interaccion se pueden añadir likes y amigos, y hacer dos columnas mas y que sean contadores por ejemplo, si no planteo otra cosa
+ -------------------------------------------------------------------------
+
+ insert into positions(id, geom, genero, artista) values ('4','SRID=3035;POINT(44.408348 -3.541147)','Rock','Tumadre2.0')
 
 
 

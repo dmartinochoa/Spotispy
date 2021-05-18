@@ -183,7 +183,7 @@ function play_uri(uri, position) {
         .catch(error => console.log('error', error));
 
     get_playback_info()
-
+    searchArea();
 }
 
 function get_playback_info() {
@@ -313,7 +313,7 @@ function set_volume(volume_percent) {
 }
 
 function show_track_info(result) {
-    if (!(typeof(result.item.duration_ms) != "undefined")) {
+    if ((typeof(result.item) != "undefined")) {
         var duration = result.item.duration_ms
         var progress = result.progress_ms
 
@@ -329,8 +329,70 @@ function refresh_auth() {
     console.log("refresh_token: " + refresh_token)
 }
 
+function searchArea() {
+    getLocation()
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "id": 1,
+        "username": "test",
+        "lat": "40.4053485",
+        "long": "-3.8764663",
+        "genre": "Rock",
+        "artist": "cock"
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://localhost:3000/home/search", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
 function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);
     var seconds = ((millis % 60000) / 1000).toFixed(0)
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+}
+
+
+function showPosition(position) {
+    console.log("testgetshowpos")
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+
+    getDistanceFromLatLonInKm(lat, lon, 0.0236, 37.9062)
+}
+
+function getLocation() {
+    console.log("testgetloc")
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        alert("Geolocation is not supported by this browser.")
+    }
+}
+
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
 }

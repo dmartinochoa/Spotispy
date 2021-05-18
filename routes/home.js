@@ -48,4 +48,10 @@ function storeWithOriginalName(file) {
     }
 }
 
+router.post('/search', async function(request, response) {
+    console.log(request.body)
+    response.send('hi')
+
+})
+
 module.exports = router
