@@ -22,6 +22,7 @@ router.post('/', async(request, response) => {
         const results = await pool.query(sql, values)
         console.log("User Registered")
         response.redirect('/')
+            //MOVE TO USER DAO
 
     } catch (error) {
         console.log(error)

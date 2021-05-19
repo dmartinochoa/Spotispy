@@ -15,7 +15,7 @@ Todo esto esta en KM recuerda
 
 *-----------------------------------------------------------------------*
 
-SELECT b.id,ST_Distance(a.geom,b.geom)*100 as dist, b.genero, b.artista
+SELECT b.id,ST_Distance(a.geom,b.geom)*100 as dist, b.genre, b.artist
 FROM positions a,positions b
 WHERE a.id = '1' AND (ST_Distance(a.geom,b.geom)*100) > 0.4;
 
@@ -42,8 +42,8 @@ Insert into Friends values('Usuario1','AmigoDeUsuario1')
 Yo creo que esta forma es la mas rapida y mas sencilla para trabajar con si son amigos o no, en caso de no hacerlo lo dejaba puesto para poner que esta para proximas 
 versiones, si queires opciones para plantear interaccion se pueden añadir likes y amigos, y hacer dos columnas mas y que sean contadores por ejemplo, si no planteo otra cosa
  -------------------------------------------------------------------------
-
- insert into positions(id, geom, genero, artista) values ('4','SRID=3035;POINT(44.408348 -3.541147)','Rock','Tumadre2.0')
+st_x(geom ) as lng, st_y(geom )
+insert into positions("idUser", geom, genre, artist) values ('1','SRID=3035;POINT(44.408348 -3.541147)','Rock','Tumadre2.0')
 
 
 

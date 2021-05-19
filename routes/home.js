@@ -2,9 +2,14 @@ const express = require("express")
 const router = express.Router()
 const fs = require('fs')
 const path = require('path')
+const bodyParser = require('body-parser')
 const multer = require('multer')({
     dest: 'public/uploads/profile_images'
 })
+
+const geo_dao = require('../models/geo_dao.js')
+const user_dao = require('../models/user_dao.js')
+const { use } = require("./login.js")
 
 router.get('/', async function(request, response) {
     const user = request.session.username
@@ -50,8 +55,11 @@ function storeWithOriginalName(file) {
 
 router.post('/search', async function(request, response) {
     console.log(request.body)
-    response.send('hi')
-
+    let username = request.session.username
+    if (typeof(username != 'undefined')) {
+        let id_user = await user_dao.get_id_by_user(request, username)
+        geo_dao.insert_pos(request, id_user, username, request.body.genre, request.body.artist, request.body.lat, request.body.long)
+    }
 })
 
 module.exports = router
