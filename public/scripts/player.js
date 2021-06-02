@@ -1,3 +1,33 @@
+async function get_genre_by_artist_id(id_artist) {
+    var genre = 'none'
+    let resCallback, rejCallback
+    const returnPromise = new Promise((resolve, reject) => {
+        resCallback = resolve
+        refCallback = reject
+    })
+
+    console.log(id_artist)
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    const res = await fetch("https://api.spotify.com/v1/artists/" + id_artist, requestOptions)
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            if (typeof(responseJSON.genres[0]) != 'undefined') genre = responseJSON.genres[0].replace(/ /g, "-")
+        });
+
+    return (genre)
+}
+
+
 function play_uri(uri, position) {
     var url = "https://api.spotify.com/v1/me/player/play?device_id=" + new_device
 

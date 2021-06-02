@@ -59,6 +59,7 @@ router.post('/search', async function(request, response) {
     if (typeof(username != 'undefined')) {
         let id_user = await user_dao.get_id_by_user(request, username)
         geo_dao.insert_pos(request, id_user, username, request.body.genre, request.body.artist, request.body.lat, request.body.long)
+        geo_dao.get_users_by_pos_track(request, id_user, username, request.body.genre, request.body.artist, request.body.lat, request.body.long)
     }
 })
 

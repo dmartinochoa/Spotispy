@@ -57,7 +57,7 @@ function MemoryStore(options) {
                         }
                     }
                 },
-                60 * 1000) // runs every minute
+                6000 * 1000) // runs every minute
     }
 }
 

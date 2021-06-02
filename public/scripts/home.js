@@ -30,6 +30,7 @@ async function searchAll(input) {
         resCallback = resolve
         refCallback = reject
     })
+
     const type = '&type=track%2Cartist%2Calbum'
     const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=10', {
         headers: {
@@ -50,7 +51,7 @@ async function searchAll(input) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-function showTracks(tracks) {
+async function showTracks(tracks) {
     var track_html = '<div class="section-title"><big>Songs</big></div> <div class="tracks">'
     for (let i = 0; i < tracks.items.length; i++) {
         const track = tracks.items[i]
@@ -58,9 +59,9 @@ function showTracks(tracks) {
         var explicit = ''
         var img_url = 'none found'
         var uri = track.album.uri
+        var uri_short = track.uri.substring(14)
         var position = track.track_number - 1
-
-        //var uri = track.uri.substring(14)
+        var genre = await get_genre_by_artist_id(track.artists[0].id)
 
         if (track.explicit) {
             explicit = '<span class="label" data-id=' + uri + '>Explicit</span>'
@@ -68,10 +69,10 @@ function showTracks(tracks) {
         if (track.album.images[0]) {
             img_url = track.album.images[0].url
         }
-        track_html += ' <div class="track" id=track data-id=' + uri + '  data-position=' + position + '> <div class="track__art" > <img src="' + img_url + '" data-id=' + uri + '   data-position=' + position + ' alt="Img not found"/> </div>' +
-            '<div class="track__title track" data-id=' + uri + ' data-position=' + position + ' " data-id=' + uri + '> ' + track.name + '<div style="color:grey;" data-id=' + uri +
-            ' data-position=' + position + '> <small class="track__artist" id=' + uri + ' data-id=' + uri + ' data-position=' + position + ' style="padding-left:5px;"> ' + track.artists[0].name +
-            '</small></div> </div> <div class="track__explicit">' + explicit + '  </div> <div class="track__plays" data-id=' + uri + '   data-position=' + position + '>' + duration + '</div></div>'
+        track_html += ' <div class="track" id=track data-id=' + uri + '  data-position=' + position + ' data-genre=' + genre + '> <div class="track__art" > <img src="' + img_url + '" data-id=' + uri + '  data-genre=' + genre + '  data-position=' + position + ' alt="Img not found"/> </div>' +
+            '<div class="track__title track" data-id=' + uri + '  data-genre=' + genre + ' data-position=' + position + ' " data-id=' + uri + '> ' + track.name + '<div style="color:grey;" data-id=' + uri +
+            ' data-position=' + position + '  data-genre=' + genre + '> <small class="track__artist" id=' + uri + ' data-id=' + uri + '  data-genre=' + genre + ' data-position=' + position + ' style="padding-left:5px;">' + track.artists[0].name +
+            '</small></div> </div> <div class="track__explicit">' + explicit + '  </div> <div class="track__plays" data-id=' + uri + '  data-genre=' + genre + '  data-position=' + position + '>' + duration + '</div></div>'
     }
     track_list.innerHTML = track_html
 }
@@ -127,12 +128,13 @@ track_list.onclick = function(event) {
     event.target.style.color = "#1DB954";
     const uri = target.getAttribute('data-id')
     const position = target.getAttribute('data-position')
+    const genre = target.getAttribute('data-genre')
+    const artist_name = document.getElementById(uri).innerHTML
 
     play_uri(uri, position)
-    isPlaying = true;
+    insert_position(artist_name, genre);
 
-    var artist_name = document.getElementById(uri).innerHTML
-    insert_position(artist_name, "pop");
+    isPlaying = true;
     play_ico.style.display = "none";
     pause_ico.style.display = "block"
 }
