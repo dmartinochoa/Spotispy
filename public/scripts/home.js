@@ -95,7 +95,7 @@ async function showTracks(tracks) {
 
 function showAlbums(albums) {
     var album_html = ' <div class="overview__albums__head"> <span class="section-title"><big>Albums</big></span> </div>'
-    for (let i = 0; i < albums.items.length - 5; i++) {
+    for (let i = 0; i < albums.items.length - 10; i++) {
         const album = albums.items[i];
         const release_year = album.release_date.substring(0, 4)
         var uri = album.uri.substring(14)
@@ -112,7 +112,7 @@ function showAlbums(albums) {
 function showArtists(artists) {
     var artist_html = '<div class="overview__albums__head" style="width: 100%;"> <span class="section-title"><big>Artists</big></span> </div>'
     var img_url = ''
-    for (let i = 0; i < artists.items.length - 2; i++) {
+    for (let i = 0; i < artists.items.length - 3; i++) {
         const artist = artists.items[i];
         const artist_type = artist.type.charAt(0).toUpperCase() + artist.type.slice(1)
         if (artist.images[0]) {
