@@ -23,6 +23,24 @@ body {
     padding-left: 15px;
 }
 
+#mybold {
+    color: white;
+    text-align: left;
+}
+
+.mybolder {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+}
+
+#mysmolbold {
+    color: #aaaaaa;
+    text-align: left;
+}
+
 body a {
     color: #aaaaaa;
 }
@@ -1159,7 +1177,6 @@ body a:hover {
 
 .social {
     padding: 15px;
-    text-align: center;
     overflow-y: scroll;
 }
 

@@ -29,12 +29,13 @@ async function get_users_by_pos_track(request, id_user, username, genre, artist,
 
         var supamap = new Map()
         result_users.forEach(element => {
-            supamap.set(element, { idUser: element, dist: 0, artist_list: [], genre_list: [] })
+            supamap.set(element, { idUser: element, username: '', dist: 0, artist_list: [], genre_list: [] })
         });
 
         result_rows.forEach(element => {
             var updated_user = (supamap.get(element.idUser))
             updated_user.dist = element.dist
+            updated_user.username = element.username
             if (!updated_user.genre_list.includes(element.genre)) updated_user.genre_list.push(element.genre)
             if (!updated_user.artist_list.includes(element.artist)) updated_user.artist_list.push(element.artist)
         })
