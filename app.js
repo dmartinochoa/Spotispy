@@ -1,3 +1,4 @@
+require('dotenv').config({ path: __dirname + '/config/session_config.env' })
 const https = require('https')
 const fs = require('fs')
 const morgan = require('morgan')
@@ -27,9 +28,11 @@ app.use(morgan(('[REQUEST: :date ] : :method -> :url - Status: :status - :respon
 app.use(flash())
 app.use(session({ // Let Express know we'll be using some of its packages
     name: 'yep',
-    secret: 'cock',
+    secret: process.env.SESSION_SECRET,
     store: store,
     resave: false,
+    path: '/',
+    secure: true,
     saveUninitialized: true,
     maxAge: 24 * 60 * 60 * 1000 //24 hours
 }))

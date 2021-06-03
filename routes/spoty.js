@@ -5,8 +5,8 @@ const querystring = require('querystring')
 const cookieParser = require('cookie-parser');
 const SpotifyWebApi = require('spotify-web-api-node')
 
-const client_id = '8316a2165c4645139441d2b2a85a64f2'
-const client_secret = '92a7730b0f8946ef80af475a957abc7b'
+const client_id = process.env.CLIENT_ID
+const client_secret = process.env.CLIENT_SECRET
 const redirect_uri = 'https://localhost:3000/spoty/callback' // Must be the same as in spotify developers project settings
 var stateKey = 'spotify_auth_state'
 
