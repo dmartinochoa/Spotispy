@@ -4,7 +4,7 @@ function insert_position(artist, genre) {
             var raw = JSON.stringify({
                 "lat": position.coords.latitude,
                 "long": position.coords.longitude,
-                "genre": 'pop',
+                "genre": genre,
                 "artist": artist
             })
 

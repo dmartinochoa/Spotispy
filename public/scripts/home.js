@@ -12,7 +12,7 @@ var pause_ico = document.querySelector("#pause")
 var play_ico = document.querySelector("#play")
 var next_ico = document.querySelector(".ion-ios-skipforward")
 var previous_ico = document.querySelector(".ion-ios-skipbackward")
-
+var volume_input = document.getElementById("volume_input")
 var new_device
 var isPlaying = false;
 
@@ -24,6 +24,22 @@ search_bar.addEventListener("keyup", function(event) {
     }
 })
 
+function change_volume() {
+    var x = volume_input.value;
+
+    if (!isNaN(x) && x.length > 0) {
+        if (x > 100) {
+            x = 100
+        } else if (x < 0) {
+            x = 0
+        }
+        console.log("Volume %: " + x);
+        set_volume(x)
+    } else {
+        console.log("Volume NaN")
+    }
+}
+
 async function searchAll(input) {
     let resCallback, rejCallback
     const returnPromise = new Promise((resolve, reject) => {
@@ -32,7 +48,7 @@ async function searchAll(input) {
     })
 
     const type = '&type=track%2Cartist%2Calbum'
-    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=10', {
+    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=15', {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token,

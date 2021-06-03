@@ -159,7 +159,6 @@ function get_playback_info() {
 }
 
 function set_volume(volume_percent) {
-    var url = "https://api.spotify.com/v1/me/player/volume?volume_percent" + volume_percent + "& device_id = " + new_device
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
@@ -171,7 +170,7 @@ function set_volume(volume_percent) {
         redirect: 'follow'
     };
 
-    fetch(url, requestOptions)
+    fetch("https://api.spotify.com/v1/me/player/volume?volume_percent=" + volume_percent, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
