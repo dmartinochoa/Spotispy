@@ -48,12 +48,25 @@ function show_nearby(result) {
     map.forEach(function(value, key) {
         console.log(key + " = " + value.artist_list);
         let dist = Math.round(value.dist)
-        let artist_list = value.artist_list
-        let genre_list = value.genre_list
-        user_string += '<a href="#"> <div style="display: inline-block;">' +
-            '<span class="mybolder" id="mybold">' + value.username + ' </span> <span style="padding-left: 5px;"> <small id="mybold">' + dist + 'km away</small></span> <br>' +
-            '<span id="mybold"> Artist/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + artist_list + '</small> </div>' +
-            '<span id="mybold"> Genre/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + genre_list + '</small> </div> <br> </div></a>'
+        let artist_list = value.artist_list.join(', ');
+        let genre_list = value.genre_list.join(', ');
+        let preview_artist = artist_list
+        let preview_genre = genre_list
+        if (artist_list.length >= 30) {
+            preview_artist = artist_list.substring(0, 20) + '(...)'
+        }
+        if (genre_list.length >= 30) {
+            preview_genre = genre_list.substring(0, 20) + '(...)'
+        }
+
+
+        user_string += '<div style="padding-top:20px">' +
+            '    <span class="user__info img"><img src="../favicon.ico" alt="Profile Picture" class="img-responsive" style="float:left; width:36%; padding-right:10px;border-radius: 50%;"></span> <span class="mybolder" id="mybold">' + value.username + ' </span> <span style="padding-left: 5px;"> <small id="mybold">' + dist + 'km away</small></span> <br>' +
+            '<span id="mybold"> Artist/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + preview_artist + '</small> </div>' +
+            '<span id="mybold"> Genre/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + preview_genre + '</small> </div> </div> <hr class="new1">'
     })
+
+
+
     user_list.innerHTML = user_string
 }
