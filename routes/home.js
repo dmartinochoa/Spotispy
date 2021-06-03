@@ -58,8 +58,11 @@ router.post('/search', async function(request, response) {
     let username = request.session.username
     if (typeof(username != 'undefined')) {
         let id_user = await user_dao.get_id_by_user(request, username)
-        geo_dao.insert_pos(request, id_user, username, request.body.genre, request.body.artist, request.body.lat, request.body.long)
-        geo_dao.get_users_by_pos_track(request, id_user, username, request.body.genre, request.body.artist, request.body.lat, request.body.long)
+        geo_dao.insert_pos(request, id_user, username.trim(), request.body.genre.trim(), request.body.artist.trim(), request.body.lat, request.body.long)
+        let user_map = await geo_dao.get_users_by_pos_track(request, id_user, username.trim(), request.body.genre.trim(), request.body.artist.trim(), request.body.lat, request.body.long)
+        map_object = Object.fromEntries(user_map)
+        console.log(map_object)
+        response.send(map_object)
     }
 })
 

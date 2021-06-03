@@ -4,7 +4,7 @@ function insert_position(artist, genre) {
             var raw = JSON.stringify({
                 "lat": position.coords.latitude,
                 "long": position.coords.longitude,
-                "genre": genre,
+                "genre": 'pop',
                 "artist": artist
             })
 
@@ -20,7 +20,7 @@ function insert_position(artist, genre) {
 
             fetch("https://localhost:3000/home/search", requestOptions)
                 .then(response => response.text())
-                .then(result => console.log(result))
+                .then(result => show_nearby(JSON.parse(result)))
                 .catch(error => console.log('error', error));
         });
 
@@ -38,4 +38,12 @@ function getLocation(callback) {
     } else {
         alert("Geolocation is not supported by this browser.");
     }
+}
+
+function show_nearby(result) {
+    const map = new Map(Object.entries(result));
+    map.forEach(function(value, key) {
+        console.log(key + " = " + value.artist_list);
+    })
+
 }
