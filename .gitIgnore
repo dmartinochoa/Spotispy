@@ -3,4 +3,3 @@ node_modules/
 config/
 *.env
 config/session_config.env
-config/session_config.env

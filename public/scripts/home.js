@@ -57,7 +57,7 @@ async function searchAll(input) {
     })
     const content = await res.json();
     console.log("🚀 ~ file: search.js ~ line 26 ~ searchAll ~ content", content)
-    showTracks(content.tracks)
+    await showTracks(content.tracks)
     showAlbums(content.albums)
     showArtists(content.artists)
 }
