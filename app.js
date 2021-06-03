@@ -30,7 +30,8 @@ app.use(session({ // Let Express know we'll be using some of its packages
     secret: 'cock',
     store: store,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    maxAge: 24 * 60 * 60 * 1000 //24 hours
 }))
 app.use(express.static(path.join(__dirname, 'public'))) //Public folder to serve static files
 app.use(bodyParser.urlencoded({ extended: false })) //the bodyParser will extract the form data from our login.html
