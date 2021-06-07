@@ -195,7 +195,7 @@ body a:hover {
     width: 15%;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
     .content__left {
         display: none;
     }

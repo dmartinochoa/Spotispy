@@ -60,12 +60,15 @@ function show_nearby(result) {
         }
 
 
-        user_string += '<div style="padding-top:20px">' +
-            '    <span class="user__info img"><img src="../favicon.ico" alt="Profile Picture" class="img-responsive" style="float:left; width:36%; padding-right:10px;border-radius: 50%;"></span> <span class="mybolder" id="mybold">' + value.username + ' </span> <span style="padding-left: 5px;"> <small id="mybold">' + dist + 'km away</small></span> <br>' +
+        user_string += '<div style="padding-top:20px; float:left">' +
+            '    <span class="user__info img"><img src="../favicon.ico" alt="Profile Picture" class="img-responsive" style="float:left; width:40%; padding-right:10px;border-radius: 50%;"></span> <span class="mybolder" id="mybold">' + value.username + ' </span> <span style="padding-left: 5px;"> <small id="mybold">' + dist + 'km away</small></span> <br>' +
             '<span id="mybold"> Artist/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + preview_artist + '</small> </div>' +
             '<span id="mybold"> Genre/s In Common: </span> <br> <div style="padding-left: 5px;"><small id="mysmolbold">' + preview_genre + '</small> </div> </div> <hr class="new1">'
     })
-
+    if (user_string == '') {
+        user_string += ' <span id="mybold" style="text-align: center;"> No Users Found Nearby  </span> <br></br>'
+    }
+    user_string += '<div class="friends" id="friends"> <button class="button-light">Find Friends</button> </div>'
 
 
     user_list.innerHTML = user_string

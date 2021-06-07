@@ -155,7 +155,7 @@ function get_playback_info() {
             .then(response => response.text())
             .then(result => show_track_info(JSON.parse(result)))
             .catch(error => console.log('error', error));
-    }, 1000);
+    }, 5000);
 }
 
 function set_volume(volume_percent) {
