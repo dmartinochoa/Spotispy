@@ -1,3 +1,6 @@
+# :notes: Spotispy
+  This is a web project to stream music from Spotify and show users nearby that listen to similar music using the PostGIS extension for PostgreSQL.
+
 ## ⚙️ Setup <br/>
   Run ```node app.js``` to start the server (port 3000 by default) or ```nodemon app.js``` to detect file changes automatically and restart the server for you<br/>
 
@@ -34,7 +37,7 @@
  
 ## ℹ️ Resources <br>
 ### PostgreSql and Node Server Info  <br/>
-Use .sql file in Resource folder to import the database <br/>
+Use backup file in resource folder for the template database <br/>
 [Node/Express Login System](https://codeshack.io/basic-login-system-nodejs-express-mysql/#:~:text=Getting%20Started,js.)<br/>
 
 ### Spotify API Info  <br/>
@@ -66,10 +69,9 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 |         iOS    |	 Safari, Chrome   | ✕ Not Supported   |
 * IE 11 or above. Must be on Windows 8.1 or above. 
 * It will stream whatever audio quality is set on spotify settings, ver/resy high might lag.
-***
-### Preview
-<img src="/res/Img/preview/home.png">
 
+## :art: Preview
+<img src="/res/Img/preview/home.png">
 <img align="left" width="45%"  src="/res/Img/preview/distance.png">
 <img align="right" width="45%" src="/res/Img/preview/login.png">
 
