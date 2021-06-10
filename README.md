@@ -36,14 +36,12 @@
 ### PostgreSql and Node Server Info  <br/>
 Use .sql file in Resource folder to import the database <br/>
 [Node/Express Login System](https://codeshack.io/basic-login-system-nodejs-express-mysql/#:~:text=Getting%20Started,js.)<br/>
-[Node Course](https://www.youtube.com/watch?v=Oe421EPjeBE)<br/>
 
 ### Spotify API Info  <br/>
 [Spotify API Demo](https://github.com/mujibsardar/spotify_jquery_only)<br/>
 [Connect to Spotify API](https://youtu.be/d0FFlTeyAY8)<br/>
 [Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)<br/>
 [Spotify Authorization](https://developer.spotify.com/documentation/general/guides/authorization-guide/)<br/>
-[spotify-web-api-node](https://stackoverflow.com/questions/27761493/using-spotify-web-api-node-to-generate-an-authentication-token#fromHistory)<br/>
 
 ### Geospatial SQL Objects  <br/>
 [PostGIS Extension](https://postgis.net/)<br/>
@@ -54,7 +52,6 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 [Openssl Download](https://slproweb.com/products/Win32OpenSSL.html)<br/>
 
 ### Other Info  <br/>
-[File Upload](https://davidlaym.com/2018/04/subir-archivo-con-nodejs/)<br/>
 [Geolocation](https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation_map_script)<br/>
 [Nodemailer](https://blog.mailtrap.io/nodemailer-gmail/)<br/>
 [Package size scanner](https://bundlephobia.com/scan)<br/>
