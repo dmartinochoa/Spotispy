@@ -71,7 +71,7 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 * It will stream whatever audio quality is set on spotify settings, very high might lag.
 ***
 ### Preview
-![image](res/img/preview.home.png)
+![image](/res/img/preview.home.png)
 
 
 
