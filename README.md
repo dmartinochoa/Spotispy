@@ -68,12 +68,13 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 |    Android       |Chrome, Firefox	      |   ✕ Not Supported   |
 |         iOS    |	 Safari, Chrome   | ✕ Not Supported   |
 * IE 11 or above. Must be on Windows 8.1 or above. 
-* It will stream whatever audio quality is set on spotify settings, very high might lag.
+* It will stream whatever audio quality is set on spotify settings, ver/resy high might lag.
 ***
 ### Preview
-<img align="left" width="100" height="100" src="res/Img/Preview/home.png>
+<img src="/res/Img/preview/home.png">
 
-
+<img align="left" width="45%"  src="/res/Img/preview/distance.png">
+<img align="right" width="45%" src="/res/Img/preview/login.png">
 
 
 
