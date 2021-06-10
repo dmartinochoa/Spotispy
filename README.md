@@ -70,6 +70,9 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 * IE 11 or above. Must be on Windows 8.1 or above. 
 * It will stream whatever audio quality is set on spotify settings, very high might lag.
 ***
+### Preview
+![image](res/img/preview.home.png)
+
 
 
 
