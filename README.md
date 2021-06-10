@@ -72,8 +72,8 @@ Follow instructions for cert/key, run openssl.bat as admin<br/>
 
 ## :art: Preview
 <img src="/res/Img/preview/home.png">
-<img align="left" width="48%"  src="/res/Img/preview/distance.png">
-<img align="right" width="48%" src="/res/Img/preview/login.png">
+<img align="left" width="40%"  src="/res/Img/preview/distance.png">
+<img align="right" width="50%" src="/res/Img/preview/login.png">
 
 
 
