@@ -4,8 +4,8 @@ function send_email(request, email, password) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'spotispyemail@gmail.com',
-            pass: 'crujiente1',
+            user: '',
+            pass: '',
         }
     })
 
