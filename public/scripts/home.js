@@ -13,6 +13,12 @@ var play_ico = document.querySelector("#play")
 var next_ico = document.querySelector(".ion-ios-skipforward")
 var previous_ico = document.querySelector(".ion-ios-skipbackward")
 var volume_input = document.getElementById("volume_input")
+var friends_ico = document.querySelector(".ion-person-stalker")
+var notification_ico = document.querySelector(".ion-android-notifications")
+var radio_ico = document.querySelector(".ion-radio-waves")
+var nearby_list = document.querySelector("#nearby_list")
+
+
 var new_device
 var isPlaying = false;
 
@@ -48,7 +54,7 @@ async function searchAll(input) {
     })
 
     const type = '&type=track%2Cartist%2Calbum'
-    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=from_token&limit=15', {
+    const res = await fetch('https://api.spotify.com/v1/search?q=' + input + type + '&market=NA&limit=15', {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token,
@@ -177,4 +183,15 @@ next_ico.onclick = function(event) {
 
 previous_ico.onclick = function(event) {
     previous_track()
+}
+
+// TOPBAR 
+radio_ico.onclick = function(event) {
+    nearby_users()
+}
+friends_ico.onclick = function(event) {
+
+}
+notification_ico.onclick = function(event) {
+
 }

@@ -66,4 +66,16 @@ router.post('/search', async function(request, response) {
     }
 })
 
+router.post('/search_nearby', async function(request, response) {
+    console.log(request.body)
+    let username = request.session.username
+    if (typeof(username != 'undefined')) {
+        let id_user = await user_dao.get_id_by_user(request, username)
+        let user_map = await geo_dao.get_users_nearby(request, id_user, username.trim(), request.body.lat, request.body.long)
+        map_object = Object.fromEntries(user_map)
+        console.log(map_object)
+        response.send(map_object)
+    }
+})
+
 module.exports = router

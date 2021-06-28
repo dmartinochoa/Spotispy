@@ -55,6 +55,35 @@ hr.new1 {
     text-align: left;
 }
 
+#mysmolbold2 {
+    color: #aaaaaa;
+    text-align: left;
+}
+
+#mybold2 {
+    color: white;
+    text-align: left;
+}
+
+#mybold21 {
+    color: white;
+    text-align: left;
+    font-size: 11px;
+}
+
+.mybolder2 {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+#mysmolbold2 {
+    font-size: 11px;
+    color: #aaaaaa;
+    text-align: left;
+}
+
 body a {
     color: #aaaaaa;
 }

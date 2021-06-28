@@ -7,7 +7,6 @@ const debug = require('debug')('express-session')
  * @private
  */
 
-/* istanbul ignore next */
 var defer = typeof setImmediate === 'function' ?
     setImmediate :
     function(fn) { process.nextTick(fn.bind.apply(fn, arguments)) }

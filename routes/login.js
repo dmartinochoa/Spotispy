@@ -30,7 +30,7 @@ router.post('/auth', async(request, response) => {
 
             } else {
                 console.log("Authentification failed: " + username + ' - ' + password + ' ' + enc_password)
-                response.render('../views/login.ejs') // TODO: REPLACE WITH INVALID CREDENTIALS EJS FILE AND MOVE TO USER DAO
+                response.render('../views/login.ejs')
             }
             response.end()
         } catch (err) {

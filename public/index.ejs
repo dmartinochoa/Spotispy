@@ -35,13 +35,42 @@
         </div>
 
         <div class="user">
-            <div class="user__notifications">
-                <i class="ion-android-notifications"></i>
+
+            <div class="user_nearby user__actions">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="ion-radio-waves"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" id="nearby_list" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Reload</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="user__inbox">
-                <i class="ion-archive"></i>
+
+            <div class="user_nearby user__actions user_notifications">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="ion-android-notifications"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" id="nearby_list" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Reload</a></li>
+                    </ul>
+                </div>
             </div>
+
+
+            <div class="user_nearby user__actions user_friends">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ion-person-stalker"></i>
+                        </button>
+                    <ul class="dropdown-menu dropdown-menu-right" id="nearby_list" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Reload</a></li>
+                    </ul>
+                </div>
+            </div>
+
 
             <div class="user__info">
                 <span class="user__info__img">
@@ -73,28 +102,6 @@
     <section class="content">
         <div class="content__left">
             <section class="navigation">
-
-                <!-- Main -->
-                <div class="navigation__list">
-                    <div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
-                        Main
-                    </div>
-                    <div class="collapse in" id="main">
-                        <a href="#" class="navigation__list__item">
-                            <i class="ion-ios-browsers"></i>
-                            <span>Browse</span>
-                        </a>
-                        <a href="#" class="navigation__list__item">
-                            <i class="ion-person-stalker"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="#" class="navigation__list__item">
-                            <i class="ion-radio-waves"></i>
-                            <span>Radio</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- / -->
 
                 <!-- Your Music -->
                 <div class="navigation__list">
