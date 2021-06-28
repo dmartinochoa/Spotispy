@@ -41,7 +41,7 @@
  
 ## ℹ️ Resources <br>
 ### PostgreSql and Node Server Info  <br/>
-Use backup file in resource folder for the template database <br/>
+Use backup file in resource folder for the template database (test: 671f54ce0c540f78ffe1e26dcf9c2a047aea4fda)<br/>
 [Node/Express Login System](https://codeshack.io/basic-login-system-nodejs-express-mysql/#:~:text=Getting%20Started,js.)<br/>
 
 ### Spotify API Info  <br/>

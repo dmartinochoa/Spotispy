@@ -3,9 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Spotispy - Account Recovery</title>
+    <title>Spotispy - Login</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&amp;subset=latin,latin-ext'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
     <style>
         .fa_custom {
             color: #ffffff;
@@ -517,21 +520,59 @@
 
 <body>
     <div class="materialContainer">
+
         <div class="box">
-            <div class="title">CONFIRM YOUR EMAIL ADDRESS:</div>
-            <form class="form1" align="center" action="forgot" method="POST">
+
+            <div class="title">INVALID CREDENTIALS</div>
+            <form class="form1" align="center" action="/auth" method="POST">
                 <div class="input">
-                    <label for="name"></label>
-                    <input type="text" name="email" id="name" class="emailrec" required>
+                    <label for="name">Username/Email</label>
+                    <input type="text" name="username" id="name" required>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="pass">Password</label>
+                    <input type="password" name="password" id="pass" required>
                     <span class="spin"></span>
                 </div>
 
                 <div class="button login">
-                    <input class="submit col-12" type="submit" onclick="btn()">
+                    <input class="submit col-12" type="submit" value="Log in">
                 </div>
             </form>
 
-            <a href="/" class="pass-forgot">Return Home</a>
+            <a href="/forgot" class="pass-forgot">Forgot your password?</a>
+
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2"><span class="shape"></span></div>
+
+            <div class="title">REGISTER</div>
+            <form class="form1" align="center" action="/register" method="POST">
+                <div class="input">
+                    <label for="regname">Username</label>
+                    <input type="text" name="username" id="regname" required>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="regpass">Email</label>
+                    <input type="text" name="email" id="regpass" required>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="reregpass">Password</label>
+                    <input type="password" name="password" id="reregpass" required>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="button">
+                    <input class="submit" type="submit" value="Register">
+                </div>
+            </form>
         </div>
     </div>
     <a href="https://github.com/dmartinochoa/spotispy" <i class="fa fa-github fa-3x fa_custom"></a>
@@ -542,124 +583,102 @@
 </body>
 
 <script>
-    var email_input = document.querySelector(".emailrec")
-
-    async function btn() {
-        console.log(email_input.value)
-        if (email_input.value.length > 0) await alert('check spam folder')
-    }
-
     $(function() {
 
-        $(".input input ").focus(function() {
+        $(".input input").focus(function() {
 
-            $(this).parent(".input ").each(function() {
-                $("label ", this).css({
-                    "line-height ": "18px ",
-                    "font-size ": "18px ",
-                    "font-weight ": "100 ",
-                    "top ": "0px "
+            $(this).parent(".input").each(function() {
+                $("label", this).css({
+                    "line-height": "18px",
+                    "font-size": "18px",
+                    "font-weight": "100",
+                    "top": "0px"
                 })
-                $(".spin ", this).css({
-                    "width ": "100% "
+                $(".spin", this).css({
+                    "width": "100%"
                 })
             });
         }).blur(function() {
-            $(".spin ").css({
-                "width ": "0px "
+            $(".spin").css({
+                "width": "0px"
             })
-            if ($(this).val() == " ") {
-                $(this).parent(".input ").each(function() {
-                    $("label ", this).css({
-                        "line-height ": "60px ",
-                        "font-size ": "24px ",
-                        "font-weight ": "300 ",
-                        "top ": "10px "
+            if ($(this).val() == "") {
+                $(this).parent(".input").each(function() {
+                    $("label", this).css({
+                        "line-height": "60px",
+                        "font-size": "24px",
+                        "font-weight": "300",
+                        "top": "10px"
                     })
                 });
+
             }
         });
 
-        $(".button ").click(function(e) {
-            var pX = e.pageX,
-                pY = e.pageY,
-                oX = parseInt($(this).offset().left),
-                oY = parseInt($(this).offset().top);
-
-            $(this).append('<span class="click-efect x- ' + oX + ' y- ' + oY + ' " style="margin-left: ' + (pX - oX) + 'px;margin-top: ' + (pY - oY) + 'px; "></span>')
-            $('.x-' + oX + '.y-' + oY + '').animate({
-                "width ": "500px ",
-                "height ": "500px ",
-                "top ": "-250px ",
-                "left ": "-250px ",
-
-            }, 600);
-            $("button ", this).addClass('active');
-        })
-
-        $(".alt-2 ").click(function() {
+        $(".alt-2").click(function() {
             if (!$(this).hasClass('material-button')) {
-                $(".shape ").css({
-                    "width ": "100% ",
-                    "height ": "100% ",
-                    "transform ": "rotate(0deg) "
+                $(".shape").css({
+                    "width": "100%",
+                    "height": "100%",
+                    "transform": "rotate(0deg)"
                 })
 
                 setTimeout(function() {
-                    $(".overbox ").css({
-                        "overflow ": "initial "
+                    $(".overbox").css({
+                        "overflow": "initial"
                     })
                 }, 600)
 
                 $(this).animate({
-                    "width ": "140px ",
-                    "height ": "140px "
+                    "width": "140px",
+                    "height": "140px"
                 }, 500, function() {
-                    $(".box ").removeClass("back ");
+                    $(".box").removeClass("back");
 
                     $(this).removeClass('active')
                 });
 
-                $(".overbox .title ").fadeOut(300);
-                $(".overbox .input ").fadeOut(300);
-                $(".overbox .button ").fadeOut(300);
+                $(".overbox .title").fadeOut(300);
+                $(".overbox .input").fadeOut(300);
+                $(".overbox .button").fadeOut(300);
 
-                $(".alt-2 ").addClass('material-buton');
+                $(".alt-2").addClass('material-buton');
             }
+
         })
 
-        $(".material-button ").click(function() {
+        $(".material-button").click(function() {
 
             if ($(this).hasClass('material-button')) {
                 setTimeout(function() {
-                    $(".overbox ").css({
-                        "overflow ": "hidden "
+                    $(".overbox").css({
+                        "overflow": "hidden"
                     })
-                    $(".box ").addClass("back ");
+                    $(".box").addClass("back");
                 }, 200)
                 $(this).addClass('active').animate({
-                    "width ": "700px ",
-                    "height ": "700px "
+                    "width": "700px",
+                    "height": "700px"
                 });
 
                 setTimeout(function() {
-                    $(".shape ").css({
-                        "width ": "50% ",
-                        "height ": "50% ",
-                        "transform ": "rotate(45deg) "
+                    $(".shape").css({
+                        "width": "50%",
+                        "height": "50%",
+                        "transform": "rotate(45deg)"
                     })
 
-                    $(".overbox .title ").fadeIn(300);
-                    $(".overbox .input ").fadeIn(300);
-                    $(".overbox .button ").fadeIn(300);
+                    $(".overbox .title").fadeIn(300);
+                    $(".overbox .input").fadeIn(300);
+                    $(".overbox .button").fadeIn(300);
                 }, 700)
 
                 $(this).removeClass('material-button');
             }
 
-            if ($(".alt-2 ").hasClass('material-buton')) {
-                $(".alt-2 ").removeClass('material-buton');
-                $(".alt-2 ").addClass('material-button');
+            if ($(".alt-2").hasClass('material-buton')) {
+                $(".alt-2").removeClass('material-buton');
+                $(".alt-2").addClass('material-button');
             }
         });
     });
