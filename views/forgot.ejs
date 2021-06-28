@@ -516,12 +516,12 @@
             <form class="form1" align="center" action="forgot" method="POST">
                 <div class="input">
                     <label for="name"></label>
-                    <input type="text" name="email" id="name" required>
+                    <input type="text" name="email" id="name" class="emailrec" required>
                     <span class="spin"></span>
                 </div>
 
                 <div class="button login">
-                    <input class="submit col-12" type="submit">
+                    <input class="submit col-12" type="submit" onclick="btn()">
                 </div>
             </form>
 
@@ -536,11 +536,13 @@
 
 
 <script>
-    var email_input = document.getElementById("input_email ")
+    var email_input = document.querySelector(".emailrec")
 
-    function btn() {
-        if (email_input.innerHTML.length > 0) alert('check spam folder')
+    async function btn() {
+        console.log(email_input.value)
+        if (email_input.value.length > 0) await alert('check spam folder')
     }
+
     $(function() {
 
         $(".input input ").focus(function() {

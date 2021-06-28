@@ -30,7 +30,7 @@ router.post('/auth', async(request, response) => {
 
             } else {
                 console.log("Authentification failed: " + username + ' - ' + password + ' ' + enc_password)
-                response.render('../views/login.ejs')
+                response.render('../views/login_wrong.ejs')
             }
             response.end()
         } catch (err) {
