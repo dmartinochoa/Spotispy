@@ -2,11 +2,15 @@
   This is a web project to stream music from Spotify and show users nearby that listen to similar music using the PostGIS extension for PostgreSQL.
 
 ## ⚙️ Setup <br/>
-  Run ```node app.js``` to start the server (port 3000 by default) or ```nodemon app.js``` to detect file changes automatically and restart the server for you<br/>
+  Import the database from the resource folder into pgAdmin. <br/>
+  Create a spotify developer account and use that client_id/secret in the config file. <br/>
+  For e-mail system to work, create a gmail account and authorize unsecure apps in google settings, then replace credentials in gmail.js <br/>
+  Run ```node app.js``` to start the server (port 3000 by default) or ```nodemon app.js``` to detect file changes automatically and restart the server for you. <br/>
 
 ## ✔️ Requirements  <br/>
 - Node.js (v14.16.1)
 - PostgreSQL With PostGIS Extension
+- Spotify Developer Account.
 <details>
            <summary>Node Modules</summary>
             <p>- Express -  npm install express</p>
@@ -30,7 +34,7 @@
   ├── /config		-	config settings, env variables <br/>
   ├── /models		-	data access layer, business logic	 <br/>
   ├── /node_modules		-	self explanatory	 <br/>
-  ├── /public	 - public files on server ```https://localhost:3000/(filepath)```	<br>
+  ├── /public	 - public files ```https://localhost:3000/(filepath)```	<br>
   ├── /res		-	resources  <br/> 
   ├── /routes		- api routes <br/>
   └── /views		-  yep <br/>
